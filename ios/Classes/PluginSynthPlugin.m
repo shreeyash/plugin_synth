@@ -1,4 +1,5 @@
 #import "PluginSynthPlugin.h"
+#import "FLRSynth.h"
 
 @implementation PluginSynthPlugin{
   int _numKeysDown;
@@ -29,12 +30,12 @@
   if ([@"getPlatformVersion" isEqualToString:call.method]) {
     result([@"iOS " stringByAppendingString:[[UIDevice currentDevice] systemVersion]]);
   }
-  else if([@ 'onKeyDown' isEqualToString:call.method]){
+  else if([@"onKeyDown" isEqualToString:call.method]){
     FLRSynthKeyDown(_synth, [call.arguments[0] intValue]);
     _numKeysDown +=1;
     result(@(_numKeysDown));
   }
-  else if([@ 'onKeyUp' isEqualToString:call.method]){
+  else if([@"onKeyUp" isEqualToString:call.method]){
     FLRSynthKeyUp(_synth, [call.arguments[0] intValue]);
 
     _numKeysDown -= 1;
@@ -44,9 +45,5 @@
     result(FlutterMethodNotImplemented);
   }
 }
-
-
-
-
 
 @end

@@ -1,3 +1,4 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+* Now, you can generate synth sine wave tunes for android and ios.
+
